@@ -9,19 +9,22 @@ import {
 import React from "react";
 import { HEIGHT, MAIN_COLOR, WIDTH } from "../utils";
 
-export const PotatoCard = (props) => {
+export const PotatoCard = ({ title, descr, image }) => {
+  const description = () => {
+    if (descr) {
+      return alert(descr);
+    }
+  };
   return (
     <View style={styles.container}>
       <Image
         style={{ width: "100%", height: HEIGHT * 0.25 }}
-        source={{
-          uri: "https://cdn.hswstatic.com/gif/potatoes-2.jpg",
-        }}
+        source={image}
         borderRadius={15}
       />
       <View style={styles.title}>
-        <Text style={styles.titleText}>{props.title}</Text>
-        <TouchableOpacity>
+        <Text style={styles.titleText}>{title}</Text>
+        <TouchableOpacity onPress={description}>
           <Text style={{ fontFamily: "Poppins_400Regular" }}>
             View description
           </Text>
@@ -36,6 +39,7 @@ const styles = StyleSheet.create({
     width: WIDTH * 0.96,
     height: HEIGHT * 0.3,
     marginStart: WIDTH * 0.02,
+    marginBottom: WIDTH * 0.03,
     borderRadius: 15,
   },
   title: {

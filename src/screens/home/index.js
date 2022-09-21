@@ -130,7 +130,7 @@ export const HomeScreen = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <StatusBar style="light" />
-      <ScrollView style={{ flex: 1 }}>
+      {/* <ScrollView style={{ flex: 1 }}>
         <View style={Style.contentContainer}>
           <Text style={Style.titleText}>Infected</Text>
           <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -145,13 +145,49 @@ export const HomeScreen = () => {
             <PotatoCard title={"Potato"} />
           </ScrollView>
         </View>
-        <TouchableOpacity
-          style={Style.add}
-          onPress={() => navigation.navigate("TakeImage")}
-        >
-          <icons.AntDesign name="pluscircle" size={50} color={MAIN_COLOR} />
-        </TouchableOpacity>
-      </ScrollView>
+      </ScrollView> */}
+      <TouchableOpacity
+        style={Style.add}
+        onPress={() => navigation.navigate("TakeImage")}
+      >
+        <icons.AntDesign name="pluscircle" size={50} color={MAIN_COLOR} />
+      </TouchableOpacity>
+      <FlatList
+        data={diseases}
+        renderItem={(item) => {
+          return (
+            <PotatoCard
+              title={item.item.title}
+              descr={item.item.description}
+              image={item.item.image}
+            />
+          );
+        }}
+      />
     </SafeAreaView>
   );
 };
+
+const diseases = [
+  {
+    key: 1,
+    image: require("../../../assets/healthy.jpg"),
+    title: "Healthy",
+    description:
+      "If your sweet potato is oozing, soft and squishy, discolored, smelly, or have a bunch of sprouts, it's time to toss. If there are only a few sprouts and the sweet potato is still firm you can cut the sprouted portion off, cook and eat right away, or you can plant it!",
+  },
+  {
+    key: 2,
+    image: require("../../../assets/early.jpg"),
+    title: "Early blight",
+    description:
+      "Alternaria solani is a fungal pathogen that produces a disease in tomato and potato plants called early blight. The pathogen produces distinctive 'bullseye' patterned leaf spots and can also cause stem lesions and fruit rot on tomato and tuber blight on potato.",
+  },
+  {
+    key: 3,
+    image: require("../../../assets/late.jpg"),
+    title: "Late blight",
+    description:
+      "Phytophthora infestans is an oomycete or water mold, a fungus-like microorganism that causes the serious potato and tomato disease known as late blight or potato blight.",
+  },
+];

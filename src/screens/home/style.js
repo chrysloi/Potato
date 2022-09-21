@@ -23,7 +23,7 @@ export const Style = StyleSheet.create({
   },
   add: {
     alignSelf: "center",
-    marginBottom: 20,
+    marginVertical: 10,
   },
   createUser: {
     marginTop: 25,
